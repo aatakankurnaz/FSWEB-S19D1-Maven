@@ -1,16 +1,15 @@
 package com.workintech.s18d2;
 
+import com.workintech.s18d2.dao.FruitRepository;
 import com.workintech.s18d2.entity.Fruit;
 import com.workintech.s18d2.entity.FruitType;
 import com.workintech.s18d2.entity.Vegetable;
 import com.workintech.s18d2.exceptions.PlantException;
-import com.workintech.s18d2.repository.FruitRepository;
 import com.workintech.s18d2.services.FruitServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -187,7 +186,7 @@ class MainTest {
     @DisplayName("FruitService::delete() should return the deleted fruit")
     void testDeleteFruitService() {
         when(mockFruitRepository.findById(anyLong())).thenReturn(Optional.of(sampleFruitForFruitServiceTest));
-        doNothing().when(mockFruitRepository).delete(any(Fruit.class));
+
 
         Fruit deletedFruit = fruitService.delete(1L);
 
